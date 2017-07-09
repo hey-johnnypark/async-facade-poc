@@ -41,5 +41,5 @@ public class Application {
       vertx.deployVerticle(dispatcher);
     });
   }
-  
+
 }
