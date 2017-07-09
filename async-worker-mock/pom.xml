@@ -9,7 +9,7 @@
   </parent>
   <modelVersion>4.0.0</modelVersion>
 
-  <artifactId>async-api-mock</artifactId>
+  <artifactId>async-worker-mock</artifactId>
 
   <dependencies>
     <dependency>
