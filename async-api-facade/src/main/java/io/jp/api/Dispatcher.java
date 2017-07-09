@@ -74,13 +74,13 @@ public class Dispatcher extends AbstractVerticle {
   }
 
   private void handleConsumedRecord(ConsumerRecord<String, String> record) {
-    LOG.info("Received {} from {}", record.value(), topic_in);
+    LOG.debug("Received {} from {}", record.value(), topic_in);
     JsonObject obj = new JsonObject(record.value());
 
     vertx.sharedData().getClusterWideMap("sync", res -> {
       res.result().remove(obj.getString("id"), assoc -> {
         if (assoc.succeeded()) {
-          LOG.info("Found assoc {} -> {}", obj.getString("id"), assoc.result());
+          LOG.debug("Found assoc {} -> {}", obj.getString("id"), assoc.result());
           vertx.eventBus().send((String) assoc.result(), obj);
         }
       });
@@ -105,7 +105,7 @@ public class Dispatcher extends AbstractVerticle {
     LOG.info("Send msg=[{}] to {}", obj, topic_out);
     vertx.sharedData().getClusterWideMap("sync", res -> {
       res.result().put(obj.getString("id"), eb_local_address, putSuccess -> {
-        LOG.info("Assigned {} to {}", obj.getString("id"), eb_local_address);
+        LOG.debug("Assigned {} to {}", obj.getString("id"), eb_local_address);
         producer.send(new ProducerRecord<String, String>(topic_out, "foobar", obj.toString()));
       });
     });

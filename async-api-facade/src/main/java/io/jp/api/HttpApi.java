@@ -65,7 +65,7 @@ public class HttpApi extends AbstractVerticle {
   }
 
   private void logAndClose(RoutingContext ctx) {
-    LOG.info("Close request due to no response");
+    LOG.warn("Close request due to no response");
     ctx.response().setStatusCode(500).end();
   }
 
@@ -75,7 +75,7 @@ public class HttpApi extends AbstractVerticle {
         .ofNullable(mapping.remove(obj.getString("id")))
         .ifPresent(ctx ->
         {
-          LOG.info("Send {} to client", obj);
+          LOG.debug("Send {} to client", obj);
           ctx.response().end(obj.toString());
         });
   }

@@ -48,6 +48,5 @@
         <version>1.2.4.RELEASE</version>
       </plugin>
     </plugins>
-
   </build>
 </project>

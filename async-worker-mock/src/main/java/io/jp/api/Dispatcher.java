@@ -30,6 +30,7 @@ public class Dispatcher extends AbstractVerticle {
   public void start() throws Exception {
     initProducer();
     initConsumer();
+    LOG.info("Reading messages from {} and dispatching them to {}", topic_in, topic_out);
   }
 
   private void initConsumer() {
