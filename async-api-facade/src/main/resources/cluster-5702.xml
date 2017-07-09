@@ -31,10 +31,6 @@
   <network>
     <port auto-increment="false">5702</port>
     <outbound-ports>
-      <!--
-      Allowed port range when connecting to other nodes.
-      0 or * means use system provided port.
-      -->
       <ports>0</ports>
     </outbound-ports>
     <join>
@@ -49,20 +45,6 @@
           <member>127.0.0.1:5702</member>
         </member-list>
       </tcp-ip>
-      <aws enabled="false">
-        <access-key>my-access-key</access-key>
-        <secret-key>my-secret-key</secret-key>
-        <!--optional, default is us-east-1 -->
-        <region>us-west-1</region>
-        <!--optional, default is ec2.amazonaws.com. If set, region shouldn't be set as it will override this property -->
-        <host-header>ec2.amazonaws.com</host-header>
-        <!-- optional, only instances belonging to this group will be discovered, default will try all running instances -->
-        <security-group-name>hazelcast-sg</security-group-name>
-        <tag-key>type</tag-key>
-        <tag-value>hz-nodes</tag-value>
-      </aws>
-      <discovery-strategies>
-      </discovery-strategies>
     </join>
     <interfaces enabled="false">
       <interface>10.10.1.*</interface>

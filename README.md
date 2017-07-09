@@ -26,8 +26,8 @@ java -jar async-worker-mock/target/async-worker-mock-1.0-SNAPSHOT.jar
 ```
 ## Start async-api-facade (2 instances)
 ```bash
-java -jar async-api-facade/target/async-api-facade-1.0-SNAPSHOT.jar --http.port=8080
-java -jar async-api-facade/target/async-api-facade-1.0-SNAPSHOT.jar --http.port=8081
+java -Dvertx.hazelcast.config=classpath:cluster-5701.xml -jar async-api-facade/target/async-api-facade-1.0-SNAPSHOT.jar --http.port=8080
+java -Dvertx.hazelcast.config=classpath:cluster-5702.xml -jar async-api-facade/target/async-api-facade-1.0-SNAPSHOT.jar --http.port=8081
 ```
 ## Run loadtest
 ```bash

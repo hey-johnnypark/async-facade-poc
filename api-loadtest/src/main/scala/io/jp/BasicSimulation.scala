@@ -20,8 +20,8 @@ class BasicSimulation extends Simulation {
     .get("/?name=Peter")) // 9
 
   setUp(// 11
-    scn.inject(rampUsersPerSec(1000) to (10000) during (1 minutes)) // 12
-    ).protocols(httpConf) // 13
+    scn.inject(rampUsersPerSec(10) to (500) during (2 minutes)) // 12
+  ).protocols(httpConf) // 13
 
 
 }
